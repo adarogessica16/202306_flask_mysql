@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+    
+{% block title %} All Users {% endblock %}
+{% block content %}
+
+<h1>All Users</h1>
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Created at</th>
+        <th scope="col">Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+        {% for usuario in usuarios %}
+        <tr>
+            <td>{{ usuario.first_name }}</td>
+            <td>{{ usuario.last_name }}</td>
+            <td>{{ usuario.email }}</td>
+            <td>{{ usuario.created_at }}</td>
+            <td>
+                <a href="/usuarios/show/{{ usuario.id }}">Show</a> |
+                <a href="/user/edit/{{ usuario.id }}">Edit</a> |
+                <a href="/user/delete/{{ usuario.id }}">Delete</a>
+            </td> 
+        </tr>
+        {% endfor %}
+        <tr>
+            <td>
+                <a href='/usuario/new' class="btn btn-info">Add new user </a> </tr>
+            </td>
+    </tbody>
+</table>
+
+{% endblock %}

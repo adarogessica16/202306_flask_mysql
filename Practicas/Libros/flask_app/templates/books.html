@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %} Books {% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <form class="card shadow-sm p-4" method="post" action="/process_newBook">
+                <h1>New Book</h1>
+                <div class="mb-3">
+                    <label for="title" class="form-label">Title:</label>
+                    <input type="text" class="form-control" id="title" name="title">
+                </div>
+                <div class="mb-3">
+                    <label for="num_of_pages" class="form-label">Number of pages</label>
+                    <input type="number" class="form-control" id="num_of_pages" name="num_of_pages">
+                </div>
+                <button type="submit" class="btn btn-primary">Create..</button>
+            </form>
+        </div>
+
+        <!-- Para Mostrar todos los libros -->
+        <div class="col-md-6">
+            <h1>All Books</h1>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Title</th>
+                    </tr>
+                </thead>
+                <tbody>  
+                    {% for book in all_books %}
+                    <tr>
+                        <td> <p class="card-text"><a href="/book/{{book.id}}">{{book.title}}</a></p></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+        {% endblock %}

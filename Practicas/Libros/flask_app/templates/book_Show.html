@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+    
+{% block title %} Show Book {% endblock %}
+{% block content %}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <h1>Title {{book.title}}</h1>
+            <h2>Favorited by:</h2>
+            {% for author in book.favoritos %}
+            <p>{{ author.name }}</p>
+        
+            {% endfor %}
+        </div>
+        <div class="col-md-6">
+            <form action="/join/author" method="post" class="col-6">
+            <h2 class="text-info">Add Book's Favorite</h2>
+            <input type="hidden" name="book_id" value="{{book.id}}">
+            <div class="form-group">
+                <label for="author_id">Author:</label>
+                <select name="author_id" class="form-control" >
+                    {% for author in no_favorito_author %}
+                        <option value="{{author.id}}">{{author.name}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Add Book..</button>
+        </form>
+        </div>
+    </div>
+
+
+{% endblock %}

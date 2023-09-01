@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %} Datos del Usuario {% endblock %}
+
+{% block content %}
+
+<h1>User {{ usuario.id}} </h1>
+<a href='/' class="btn btn-info mt-4">Home</a> 
+<div class="container">
+    <p> First Name: {{ usuario.first_name }}</p>
+    <p>Last Name{{ usuario.last_name }}</p>
+    <p>Email:{{ usuario.email }}</p>
+    <p>Created at: {{ usuario.created_at }}</p>
+</div>
+
+{% endblock %}
